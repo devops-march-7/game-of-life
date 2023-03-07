@@ -7,17 +7,17 @@ pipeline {
                 branch: 'declae'
             }
         }
-        stage('package') {
+        stage ('package') {
             steps {
                 sh 'export PATH="/usr/lib/jvm/java-1.8.0-openjdk-amd64/bin:$PATH" && mvn package'
             }
         }
-        stage {
+        stage ('archiveArtifacts') {
             steps {
                 archiveArtifacts artifacts: '**/target/gameoflife.war'
             }
         }
-        stage {
+        stage ('junit test') {
             steps {
                 junit: '**/surefire-reports/TEST-*.xml'
             }
