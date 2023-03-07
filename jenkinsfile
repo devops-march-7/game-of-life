@@ -1,6 +1,7 @@
 pipeline {
     agent { label 'JDK_8' }
     triggeres { cron ('H/* * * *') }
+    
     stages {
         stage ('vcs') {
             steps {
